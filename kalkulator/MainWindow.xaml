@@ -45,7 +45,9 @@
             <Button x:Name="buttonMulti" Content="x" Grid.Column="3" Grid.Row="0" Click="buttonOperator_Click"/>
             <Button x:Name="buttonDot" Content="." Grid.Column="0" Grid.Row="3" Click="ButtonDot_Click"/>
             <Button x:Name="buttonEquals" Content="=" Grid.Column="3" Grid.Row="3" Click="buttonEquals_Click"/>
+            <Button x:Name="buttonUjemne" Content="(-)" Grid.Column="2" Grid.Row="3" Click="ButtonUjemne_Click"/>
 
+            <!--CYFRY-->
             <Button x:Name="button0" Content="0" Grid.Column="1" Grid.Row="3" Click="buttonLiczba_Click"/>
             <Button x:Name="button1" Content="1" Grid.Column="0" Grid.Row="2" Click="buttonLiczba_Click"/>
             <Button x:Name="button2" Content="2" Grid.Column="1" Grid.Row="2" Click="buttonLiczba_Click"/>

@@ -56,7 +56,6 @@ namespace kalkulator
 
         private void buttonEquals_Click(object sender, RoutedEventArgs e)
         {
-            ///labelOut.Content = nr1.ToString() + znak + nr2.ToString();
             float temp=0;
             if (znak == "+")
             {
@@ -68,7 +67,7 @@ namespace kalkulator
                 temp = (nr1 - nr2);
                 labelOut.Content = temp.ToString();
             }
-            else if (znak == "*")
+            else if (znak == "x")
             {
                 temp = (nr1 * nr2);
                 labelOut.Content = temp.ToString();
@@ -113,6 +112,25 @@ namespace kalkulator
             nr1 = 0;
             nr2 = 0;
             znak = "";
+        }
+
+        private void ButtonUjemne_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var str = labelOut.Content.ToString();
+
+                var temp = float.Parse(labelOut.Content.ToString());
+                if (znak == "")
+                    nr1 = nr1 * (-1);
+                else
+                    nr2 = nr2 * (-1);
+                labelOut.Content = temp * (-1);
+            }
+            catch
+            {
+                labelOut.Content = "-";
+            }
         }
     }
 }
