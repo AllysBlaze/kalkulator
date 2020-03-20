@@ -21,6 +21,8 @@ namespace kalkulator
         private float nr1 = 0;
         private float nr2 = 0;
         private string znak="";
+        private int rowna = 0;
+        private float wynik = 0;
         System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
        
         public MainWindow()
@@ -34,6 +36,11 @@ namespace kalkulator
         }
         private void buttonLiczba_Click(object sender, RoutedEventArgs  e)
         {
+            if (rowna==1)
+            {
+                labelOut.Content = "";
+                rowna = 0;
+            }
             var button = (Button)sender;
             var tmp = button.Content.ToString();
             labelOut.Content += tmp;
@@ -42,12 +49,14 @@ namespace kalkulator
             else
                 nr2 = float.Parse(labelOut.Content.ToString());
 
-
-
         }
 
         private void buttonOperator_Click (object sender, RoutedEventArgs e)
         {
+            if (rowna==1)
+            {
+                nr1 = wynik;
+            }
             var button = (Button)sender;
             var tmp = button.Content.ToString();
             znak = tmp;
@@ -56,27 +65,27 @@ namespace kalkulator
 
         private void buttonEquals_Click(object sender, RoutedEventArgs e)
         {
-            float temp=0;
+            rowna = 1;
             if (znak == "+")
             {
-                temp = (nr1 + nr2);
-                labelOut.Content = temp.ToString();
+                wynik = (nr1 + nr2);
+                labelOut.Content = wynik.ToString();
             }
             else if (znak == "-")
             {
-                temp = (nr1 - nr2);
-                labelOut.Content = temp.ToString();
+                wynik = (nr1 - nr2);
+                labelOut.Content = wynik.ToString();
             }
             else if (znak == "x")
             {
-                temp = (nr1 * nr2);
-                labelOut.Content = temp.ToString();
+                wynik = (nr1 * nr2);
+                labelOut.Content = wynik.ToString();
             }
             else if (znak == "/")
                 if (nr2 != 0)
                 {
-                    temp = (nr1 / nr2);
-                    labelOut.Content = temp.ToString();
+                    wynik = (nr1 / nr2);
+                    labelOut.Content = wynik.ToString();
                 }
                 else
                     labelOut.Content = "Error";
