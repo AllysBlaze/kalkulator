@@ -17,7 +17,7 @@ namespace kalkulator
 {
     public partial class MainWindow : Window
     {
-
+        private int kropka = 0;
         private float nr1 = 0;
         private float nr2 = 0;
         private string znak="";
@@ -38,12 +38,18 @@ namespace kalkulator
         {
             if (rowna==1)
             {
-                labelOut.Content = "";
+                labelOut.Content = "0";
                 rowna = 0;
             }
             var button = (Button)sender;
             var tmp = button.Content.ToString();
-            labelOut.Content += tmp;
+            if (labelOut.Content.ToString() == "0")
+            {
+                labelOut.Content = tmp;
+            }
+
+            else
+                labelOut.Content += tmp;
             if (znak=="")
                 nr1 = float.Parse(labelOut.Content.ToString());
             else
@@ -60,7 +66,8 @@ namespace kalkulator
             var button = (Button)sender;
             var tmp = button.Content.ToString();
             znak = tmp;
-            labelOut.Content = "";
+            labelOut.Content = "0";
+            kropka = 0;
         }
 
         private void buttonEquals_Click(object sender, RoutedEventArgs e)
@@ -92,13 +99,19 @@ namespace kalkulator
             nr1 = 0;
             nr2 = 0;
             znak = "";
+            
         }
 
         private void ButtonDot_Click(object sender, RoutedEventArgs e)
         {
             var button = (Button)sender;
             var tmp = button.Content.ToString();
-            labelOut.Content += tmp;
+            if (kropka == 0)
+            {
+                labelOut.Content += tmp;
+                kropka++;
+            }
+            
         }
 
         
@@ -111,16 +124,17 @@ namespace kalkulator
             }
             else
                 nr2 = 0;
-            labelOut.Content = "";
-
+            labelOut.Content = "0";
+            kropka = 0;
         }
 
         private void ButtonC_Click(object sender, RoutedEventArgs e)
         {
-            labelOut.Content = "";
+            labelOut.Content = "0";
             nr1 = 0;
             nr2 = 0;
             znak = "";
+            kropka = 0;
         }
 
         private void ButtonUjemne_Click(object sender, RoutedEventArgs e)
